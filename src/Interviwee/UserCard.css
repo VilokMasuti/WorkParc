@@ -1,0 +1,16 @@
+.card-row {
+  display: flex;
+  gap: 20px;
+
+  justify-content: center;
+  width: 100%;
+}
+
+.user-Card {
+  background: '#fff';
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 33%;
+  box-sizing: border-box;
+}
