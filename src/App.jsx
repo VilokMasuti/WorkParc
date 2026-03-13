@@ -1,8 +1,8 @@
-import Root from "./motion/Root";
+import GitHub from "./fewtures/github/GitHub";
 const App = () => {
   return (
-    <main className="min-h-screen w-full [perspective:1000px] [transform-style:preserve-3d]">
-      <Root />
+    <main className="min-h-screen w-full bg-zinc-100 shadow-md text-zinc-950">
+      <GitHub/>
     </main>
   );
 };
