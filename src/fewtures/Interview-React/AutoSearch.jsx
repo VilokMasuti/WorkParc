@@ -5,43 +5,41 @@ export const AutoSearch = () => {
   const [results, setResults] = useState([]);
   const [showRes, setShowRes] = useState(false);
   const [error, setError] = useState(null);
-  const [cache,setCache] = useState({})
-
-  const fetchAPI = async () => {
-const normalizedQuery = query.trim().toLowerCase();
-
-if (!normalizedQuery) {
-  setResults([]);
-  return;
-}
-
-if (cache[normalizedQuery]) {
-  setResults(cache[normalizedQuery]);
-  return;
-}
-
-
-    try {
-      setError(null);
-      const res = await fetch(`https://dummyjson.com/recipes/search?q=${encodeURIComponent(query)}`);
-      const data = await res.json();
-      // safe: if API returns data.recipes, use it; else fallback to empty array
-      setResults(Array.isArray(data.recipes) ? data.recipes : []);
-setCache((pre) => ({...pre,query:data.recipes}))
-    } catch (err) {
-      setError(err.message || "Fetch error");
-    }
-  };
+  const [cache, setCache] = useState({});
 
   // debounce like your original code
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (query.trim()) fetchAPI();
-      else setResults([]);
+      const normalizedQuery = query.trim().toLowerCase();
+
+      if (!normalizedQuery) {
+        setResults([]);
+        return;
+      }
+
+      if (cache[normalizedQuery]) {
+        setResults(cache[normalizedQuery]);
+        return;
+      }
+
+      (async () => {
+        try {
+          setError(null);
+          const res = await fetch(
+            `https://dummyjson.com/recipes/search?q=${encodeURIComponent(normalizedQuery)}`
+          );
+          const data = await res.json();
+          const recipes = Array.isArray(data.recipes) ? data.recipes : [];
+          setResults(recipes);
+          setCache((prev) => ({ ...prev, [normalizedQuery]: recipes }));
+        } catch (err) {
+          setError(err?.message || "Fetch error");
+        }
+      })();
     }, 200);
 
     return () => clearTimeout(timer);
-  }, [query]);
+  }, [query, cache]);
 
   if (error) {
     return (

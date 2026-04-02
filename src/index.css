@@ -1,17 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600&display=swap');
 @import "tailwindcss";
 
-:root {
-  --font-poppins: "Poppins", sans-serif;
+
+@theme {
+  --font-serif: 'Instrument Serif', serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
 body {
-  @apply bg-neutral-900 text-white;
-  font-family: var(--font-poppins);
+  font-family: 'Inter', sans-serif;
+  background-color: rgb(244 239 230);
+  color: rgb(15 23 42);
 }
 
-@layer utilities {
-  .card {
-    @apply w-[44rem] h-[26rem] bg-neutral-800 rounded-lg border border-neutral-600 flex flex-row p-8 absolute justify-between stroke-[0.1] hover:stroke-[0.15];
-  }
+.card {
+  width: 44rem;
+  height: 26rem;
+  background-color: rgb(38 38 38);
+  border-radius: 0.5rem;
+  border: 1px solid rgb(82 82 82);
+  display: flex;
+  padding: 2rem;
+  position: absolute;
+  justify-content: space-between;
 }

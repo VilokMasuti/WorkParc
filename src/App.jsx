@@ -1,15 +1,26 @@
-import GitHub from "./fewtures/github/GitHub";
-import Accordion from "./Interviwee/Accordion";
-import Search from "./Interviwee/Search";
-import Root from "./motion/Root";
+// import GitHub from "./fewtures/github/GitHub";
+// import Todo from "./fewtures/Todo/Todo";
+// import Accordion from "./Interviwee/Accordion";
+// import Search from "./Interviwee/Search";
+// import Root from "./motion/Root";
+
+ import Tasks from "./Interviwee/Tasks";
 
 const App = () => {
+
   return (
-    <main className="min-h-screen w-full mt-4 bg-zinc-100 shadow-md text-zinc-950">
-      <GitHub/>
-      <Root/>
-      <Accordion/>
-      <Search/>
+    <main className="min-h-screen w-full  flex flex-col   ">
+ 
+        {/* <Todo />
+        <GitHub />
+        <Root />
+        <Accordion />
+        <Search />  */}
+
+      
+<Tasks/>
+ 
+     
     </main>
   );
 };

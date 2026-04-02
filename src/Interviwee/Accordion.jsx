@@ -10,6 +10,7 @@ const faqs = [
 
 const Accordion = () => {
   const [active, setActive] = useState(null);
+  const Motion = motion;
 
   const toggleAcc = (id) => {
     setActive(active === id ? null : id);
@@ -32,18 +33,18 @@ const Accordion = () => {
               className="w-full flex justify-between items-center p-5 text-left cursor-pointer outline-none"
             >
               <h2 className="text-lg font-medium text-zinc-200">{fq.question}</h2>
-              <motion.div
+              <Motion.div
                 animate={{ rotate: active === fq.id ? 45 : 0 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="text-zinc-500 text-2xl font-light"
               >
                 +
-              </motion.div>
+              </Motion.div>
             </button>
 
             <AnimatePresence>
               {active === fq.id && (
-                <motion.div
+                <Motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 200 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -53,7 +54,7 @@ const Accordion = () => {
                   <p className="px-5 pb-5 text-zinc-400 leading-relaxed">
                     {fq.answer}
                   </p>
-                </motion.div>
+                </Motion.div>
               )}
             </AnimatePresence>
           </div>
