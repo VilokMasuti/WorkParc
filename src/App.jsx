@@ -6,6 +6,7 @@
 
 import Accordion from "./parttens/Accordion";
 import { Tasks } from "./parttens/Tasks";
+import Toast from "./parttens/Toast";
 
 //  import Tasks from "./Interviwee/Tasks";
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
  
     <Tasks/>
 <Accordion/>
+<Toast/>
  
      
     </main>
