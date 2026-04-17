@@ -2,7 +2,7 @@ import { useState } from "react"
 
 const Toast = () => {
   const [toasts, setToasts] = useState([])
-const Max_Toasts = 3
+
   const toastStyles = {
   success: {
     border: "border-emerald-500",
@@ -27,21 +27,44 @@ const Max_Toasts = 3
 }
 
 
-const Removetoast = (id) => {
+// const Removetoast = (id) => {
+//   setToasts((pre) => pre.filter((p) => p.id !== id))
+// }
+
+
+// const AddToast = ({  type='info', title='Notice',   message=''} ={}) => {
+// const id = Date.now()
+//   const NewToast = {
+//     id,type,title,   message
+//   }
+
+//  setToasts(pre =>  [...pre, NewToast].slice(-Max_Toasts) )
+
+//   setTimeout(() => {
+// Removetoast(id)
+//   },3000)
+
+// }
+
+
+const RemoveToast = (id) => {
   setToasts((pre) => pre.filter((p) => p.id !== id))
 }
 
+const AddToast = ({type='info',message='fsdfsd',title='Notice'} = {}) => {
 
-const AddToast = ({  type='info', title='Notice',   message=''} ={}) => {
-const id = Date.now()
-  const NewToast = {
-    id,type,title,   message
+  const id = Date.now()
+  const Max_Toast = 3
+
+  const newToast = {
+    id,
+    type,
+    message,title
   }
-
- setToasts(pre =>  [...pre, NewToast].slice(-Max_Toasts) )
+  setToasts(pre => [...pre,newToast].slice(-Max_Toast))
 
   setTimeout(() => {
-Removetoast(id)
+RemoveToast(id)
   },3000)
 
 }
@@ -51,7 +74,7 @@ Removetoast(id)
   
   return (
    
-<div className=" bg-neutral-900  shadow-md flex flex-col gap-10  p-6 min-h-screen items-center justify-center">
+<div className="   shadow-md flex flex-col gap-10  p-6 min-h-screen items-center justify-center">
 <div className=" flex gap-[4rem]">
   <button
   onClick={() => {

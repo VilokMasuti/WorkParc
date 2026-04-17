@@ -1,5 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
+ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+
 
 const faqs = [
   {
@@ -29,55 +30,61 @@ const faqs = [
   }
 ]
 const Accordion = () => {
-  const [activeId, setActiveId] = useState(null)
-  const toggle = (id) => { 
+  // const [activeId, setActiveId] = useState(null)
+  // const toggle = (id) => { 
+  //   setActiveId((pre) => pre  === id ? null : id)
+  //  } 
+
+  const [activeId,setActiveId] = useState(null)
+  const toggle = (id) => {
     setActiveId((pre) => pre === id ? null : id)
-   } 
+  }
  return (
-  <div className="flex h-screen items-center justify-center bg-zinc-900">
-    <div className="w-full max-w-xl space-y-2 rounded-2xl bg-zinc-800 p-3">
-      {faqs.map((item) => {
-        const isOpen = activeId === item.id;
+  <div className="flex h-screen  items-center justify-center mt-[20rem] md:mt-[-20rem]">
+<div className=" w-full max-w-3xl space-y-2  p-3  bg-neutral-950 rounded-md shadow-neutral-100">
+  {faqs.map((item) => {
+    const isOpen = activeId === item.id
 
-        return (
-          <div key={item.id}>
-            <motion.button
-              type="button"
-              onClick={() => toggle(item.id)}
-              className="flex w-full items-center justify-between rounded-lg p-4 text-left text-zinc-200 transition hover:bg-zinc-700"
-              aria-expanded={isOpen}
-            >
-              <span className="font-medium">{item.q}</span>
+    return (
+       <div key={item.id}> 
+         <motion.button
+         type="button"
+          onClick={() => toggle(item.id)}
+          className="flex w-full items-center justify-between rounded-lg p-4 text-left text-zinc-200 transition hover:bg-zinc-900 cursor-pointer duration-1000"
+         >
 
-              <motion.span
+<span className="font-medium">{item.q}</span>
+
+               <motion.span
                 key="icon"
-                animate={{ rotate: isOpen ? 49 : 0 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-              >
-                +
-              </motion.span>
-            </motion.button>
+                animate={{rotate:isOpen ? 49 :0}}
+              
+                transition={{ duration: 0.9, ease: "easeOut" }}               >
+                +              
+                 </motion.span>
+         </motion.button>
+           <AnimatePresence>
+           { isOpen && (
+ <motion.div               
+    key="answer-panel"
+    initial={{height:0,opacity:0, }}
+    animate={{height:"auto",opacity:2,}}
+         exit={{ height: 0, opacity: 0, }}
+                 transition={{ duration: 0.55, ease: "easeOut" }}
+                   className="overflow-hidden"
+    >
 
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  key="answer-panel"
-                  initial={{ height: 0, opacity: 0, y: -10 }}
-                  animate={{ height: "auto", opacity: 1, y: 0 }}
-                  exit={{ height: 0, opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="overflow-hidden"
-                >
+                
                   <p className="px-4 pb-4 text-sm text-zinc-400">
-                    {item.a}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-    </div>
+                     {item.a}
+                   </p>
+    </motion.div>
+            )}
+           </AnimatePresence>
+       </div>
+    )
+  })}
+</div>
   </div>
 );
 }

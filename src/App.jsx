@@ -5,6 +5,7 @@
 // import Root from "./motion/Root";
 
 import Accordion from "./parttens/Accordion";
+import Modal from "./parttens/Modal";
 import { Tasks } from "./parttens/Tasks";
 import Toast from "./parttens/Toast";
 
@@ -17,9 +18,33 @@ const App = () => {
     <Tasks/>
 <Accordion/>
 <Toast/>
+
+<Modal/>
  
      
     </main>
   );
 };
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

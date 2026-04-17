@@ -57,7 +57,7 @@ const moveTask = (id) => {
     const ongoing = task.filter((t) => t.status === 'ongoing')
       const done = task.filter((t) => t.status === 'done')
   return (
-    <section className="h-dvh flex flex-col items-center">
+    <section className="h-screen flex flex-col items-center">
       
     <h1 className="  font-bold text-4xl  mt-5 font-serif text-neutral-900">TASK - MANGER</h1>
 
